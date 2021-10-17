@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "9449326897",
+    "project_id": "m24-mechanic24",
+    "storage_bucket": "m24-mechanic24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9449326897:android:39aa7017024a565e090810",
+        "android_client_info": {
+          "package_name": "com.M24.m24"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9449326897-sgh41ekerthan9mj1g0kqr2i5aaupu96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNJF-l5oAE8nnCwXFXM_Y52ZAAK4sBHxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9449326897-sgh41ekerthan9mj1g0kqr2i5aaupu96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:9449326897:android:697d247a340dc01f090810",
+        "android_client_info": {
+          "package_name": "com.m24.m24mechanicapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "9449326897-sgh41ekerthan9mj1g0kqr2i5aaupu96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNJF-l5oAE8nnCwXFXM_Y52ZAAK4sBHxo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "9449326897-sgh41ekerthan9mj1g0kqr2i5aaupu96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
