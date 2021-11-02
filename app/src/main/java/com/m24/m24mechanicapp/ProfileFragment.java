@@ -37,7 +37,12 @@ import com.google.firebase.storage.UploadTask;
 import org.jetbrains.annotations.NotNull;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+
+import Adapters.serviceadapter;
+import Helperclass.mechdataupdater;
+import Helperclass.servicehelperclass;
 
 
 public class ProfileFragment extends Fragment {
@@ -49,11 +54,13 @@ public class ProfileFragment extends Fragment {
     private FirebaseFirestore db ;
     FirebaseStorage storage;
     StorageReference storageRef;
-    FirestoreRecyclerAdapter serviceadp;
     private static final int PICK_IMAGE_REQUEST = 1;
     SharedPreferences systemfile;
     private String Uid;
     Uri image,downloaduri;
+    List<String> selectedservicesp;
+    private List<String> servicesp = new ArrayList<>();
+    private List<String> serviceiconp = new ArrayList<>();
 
 
     @Override
@@ -117,20 +124,27 @@ public class ProfileFragment extends Fragment {
         email = v.findViewById(R.id.email);
         editphoto = v.findViewById(R.id.editprofilephoto);
         serviceedit = v.findViewById(R.id.serviceedit);
+        editsubmit = v.findViewById(R.id.submitprofile);
         db.collection("MechanicData").document(Uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                mechdataupdater mechupdater = documentSnapshot.toObject(mechdataupdater.class);
                 imageurl = (String) documentSnapshot.get("profileimage");
                 Glide.with(getActivity()).load(imageurl).into(propic);
-                name.setText((CharSequence) documentSnapshot.get("name"));
-                storename.setText((CharSequence) documentSnapshot.get("storename"));
-                place.setText((CharSequence) documentSnapshot.get("place"));
-                dist.setText((CharSequence) documentSnapshot.get("dist"));
-                pin.setText((CharSequence) documentSnapshot.get("pin"));
-                licno.setText((CharSequence) documentSnapshot.get("licno"));
-                phone.setText((CharSequence) documentSnapshot.get("phone"));
+                name.setText(mechupdater.getName());
+                storename.setText(mechupdater.getStorename());
+                place.setText(mechupdater.getPlace());
+                dist.setText(mechupdater.getDist());
+                pin.setText(mechupdater.getPin());
+                licno.setText(mechupdater.getLicno());
+                phone.setText(mechupdater.getPhone());
+                semail = mechupdater.getEmail();
+                selectedservicesp = mechupdater.getService();
+               // String ser = String.valueOf(selectedservicesp.size());
+                //Toast.makeText(getContext(), ser, Toast.LENGTH_SHORT).show();
             }
         });
+        //Toast.makeText(getContext(), selectedservicesp.size(), Toast.LENGTH_SHORT).show();
         editphoto.setOnClickListener(new View.OnClickListener() {
 
 
@@ -143,48 +157,70 @@ public class ProfileFragment extends Fragment {
             }
         });
         ///////////////////////////////////////////////////////////service/////////////////////////////////////////////
-        Query query = db.collection("M24Assets").document("servicesprovided")
-                .collection("services").orderBy("priority");
-        FirestoreRecyclerOptions<serviceadapter> service = new FirestoreRecyclerOptions.Builder<serviceadapter>()
-                .setQuery(query,serviceadapter.class).build();
-        serviceadp = new FirestoreRecyclerAdapter<serviceadapter, register.serviceholder>(service) {
-            @NonNull
-            @NotNull
+        db.collection("M24data").document("services").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public register.serviceholder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-                View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.servicerecycler, parent, false);
-                return new register.serviceholder(v);
-            }
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                servicehelperclass servicehelperclass = documentSnapshot.toObject(Helperclass.servicehelperclass.class);
+                servicesp = servicehelperclass.getServicename();
+                serviceiconp = servicehelperclass.getServicename();
+                //String sers = String.valueOf(selectedservicesp.size());
+               // Toast.makeText(getContext(), sers, Toast.LENGTH_SHORT).show();
+                serviceadapter serviceadp = new serviceadapter(servicesp,selectedservicesp,serviceiconp,getContext());
+                String ser = String.valueOf(servicesp.size());
+                Toast.makeText(getContext(), ser, Toast.LENGTH_SHORT).show();
+                
 
-            @Override
-            protected void onBindViewHolder(@NonNull @NotNull register.serviceholder holder, int position, @NonNull @NotNull serviceadapter model) {
-                Glide.with(getActivity()).load(model.iconsurl).into(holder.icon);
-                holder.serviceid.setText(model.service);
+                serviceedit.setHasFixedSize(true);
+                GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
+                serviceedit.setLayoutManager(layoutManager);
+                serviceedit.setAdapter(serviceadp);
             }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getContext(), "Failed to get ads!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        editsubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // semail = email.getText().toString().trim();
+                sname = name.getText().toString().trim();
+                sstorename = storename.getText().toString().trim();
+                splace = place.getText().toString().trim();
+                sdist = dist.getText().toString().trim();
+                spin = pin.getText().toString().trim();
+                slicno = licno.getText().toString().trim();
+                sphone = phone.getText().toString().trim();
+                //List<String> selectedservicesp = new ArrayList<>();
+                selectedservicesp = serviceadapter.getSelectedservices();
+                String sers = String.valueOf(selectedservicesp.size());
+                Toast.makeText(getContext(), sers, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getContext(), selectedservicesp.size(), Toast.LENGTH_SHORT).show();
+                if ( sname.isEmpty() || sstorename.isEmpty() || splace.isEmpty() || sdist.isEmpty() || slicno.isEmpty() || sphone.isEmpty()
+                        || spin.isEmpty() ) {
+                    Toast.makeText(getActivity(), "Please fill the the form,please", Toast.LENGTH_SHORT).show();
+                } else {
+                    mechdataupdater update = new mechdataupdater(sname, sstorename, splace, sdist, spin, slicno, sphone, semail,serviceadapter.getSelectedservices());
+                    db.collection("MechanicData").document(Uid).set(update).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(getContext(), "Succesfully updated", Toast.LENGTH_SHORT).show();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
 
-            @Override
-            public int getItemCount() {
-                return super.getItemCount();
+                        }
+                    });
+
+                }
             }
-        };
-        serviceedit.setHasFixedSize(true);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(),3);
-        serviceedit.setLayoutManager(layoutManager);
-        serviceedit.setAdapter(serviceadp);
+        });
 
         return v;
     }
-    @Override
-    public void onStart() {
-        super.onStart();
-        serviceadp.startListening();
-    }
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        serviceadp.stopListening();
-    }
 
 
 }

@@ -37,7 +37,7 @@
                 android:textColor="@color/white"
                 android:drawableRight="@drawable/editrule"
                 />
-            
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
@@ -193,12 +193,28 @@
                 android:textSize="25dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/serviceedit"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submitprofile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:textColor="@color/white"
+                android:textSize="19dp"
+                android:background="@drawable/butttonback"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="5dp"/>
 
         </LinearLayout>
 
     </ScrollView>
-        
+
 </LinearLayout>

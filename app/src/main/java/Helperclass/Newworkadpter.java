@@ -1,4 +1,4 @@
-package com.m24.m24mechanicapp;
+package Helperclass;
 
 public class Newworkadpter {
     String name,location,phonenumber,worktype,fixeddate,status,profilephoto,intogarage;
