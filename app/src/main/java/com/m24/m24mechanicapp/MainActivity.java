@@ -17,10 +17,11 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView lo;
+    ImageView logo;
     ViewPager widget;
     TabLayout tabHost;
     LinearLayout formlayout;
@@ -34,12 +35,14 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         formlayout = findViewById(R.id.form);
+        logo = findViewById(R.id.logo);
+        Glide.with(MainActivity.this).load(R.drawable.m24logo).into(logo);
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                systemfile = getSharedPreferences("systemfile",Context.MODE_PRIVATE);
-                String uid = systemfile.getString("uid","");
+                systemfile = getSharedPreferences("preference",Context.MODE_PRIVATE);
+                String uid = systemfile.getString("licenceno","");
                 if (uid.isEmpty()){
                     formlayout.setVisibility(View.VISIBLE);
                 }

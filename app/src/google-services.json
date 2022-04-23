@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "9449326897-6rotfplit7s1gl1crc1a1skr01d6kbcn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.M24.m24",
+            "certificate_hash": "baa45495ff8e03e1e62173943ba5b977e4784697"
+          }
+        },
+        {
           "client_id": "9449326897-sgh41ekerthan9mj1g0kqr2i5aaupu96.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -42,6 +50,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "9449326897-5qk43mj33o4c8ku8sa8vpv95jcce2sq9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.m24.m24mechanicapp",
+            "certificate_hash": "baa45495ff8e03e1e62173943ba5b977e4784697"
+          }
+        },
         {
           "client_id": "9449326897-sgh41ekerthan9mj1g0kqr2i5aaupu96.apps.googleusercontent.com",
           "client_type": 3

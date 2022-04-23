@@ -1,10 +1,9 @@
 package Helperclass;
 
-public class Newworkadpter {
+public class Newworkupdater {
     String name,location,phonenumber,worktype,fixeddate,status,profilephoto,intogarage;
 
-    public Newworkadpter(String name, String location, String phonenumber, String worktype, String fixeddate,
-                         String status, String profilephoto,String intogarage) {
+    public Newworkupdater(String name, String location, String phonenumber, String worktype, String fixeddate, String status, String profilephoto, String intogarage) {
         this.name = name;
         this.location = location;
         this.phonenumber = phonenumber;
@@ -15,7 +14,7 @@ public class Newworkadpter {
         this.intogarage = intogarage;
     }
 
-    public Newworkadpter() {
+    public Newworkupdater() {
     }
 
     public String getName() {

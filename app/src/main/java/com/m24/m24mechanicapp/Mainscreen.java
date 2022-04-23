@@ -10,8 +10,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 public class Mainscreen extends AppCompatActivity {
     Toolbar toolbar;
+    ImageView appbaricon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,5 @@ public class Mainscreen extends AppCompatActivity {
         }
         toolbar= findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
     }
 }

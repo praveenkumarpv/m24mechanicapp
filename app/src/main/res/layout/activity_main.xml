@@ -13,7 +13,6 @@
         android:id="@+id/logo"
         android:layout_width="135dp"
         android:layout_height="123dp"
-        android:src="@drawable/m24logo"
         android:layout_marginTop="30dp"/>
 
    <LinearLayout

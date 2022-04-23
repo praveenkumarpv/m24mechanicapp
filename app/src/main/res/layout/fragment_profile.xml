@@ -13,11 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilephoto"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:background="@drawable/sliderborder"
+                android:background="@drawable/profilepicbg"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:paddingStart="2dp"
@@ -40,16 +40,16 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="wrap_content"
                 android:visibility="visible">
                 <EditText
-                    android:id="@+id/name"
+                    android:id="@+id/pname"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
                     android:ems="10"
                     android:layout_marginEnd="10dp"
-                    android:hint="NAME"
+                    android:hint="Name"
                     android:textColorHint="@color/white"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/transparent"
@@ -61,15 +61,15 @@
                     app:layout_constraintVertical_bias="0.084" />
 
                 <EditText
-                    android:id="@+id/storename"
+                    android:id="@+id/pstorename"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:layout_marginEnd="10dp"
-                    android:hint="STORE NAME"
+                    android:hint="Store name"
                     android:textColorHint="@color/white"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/transparent"
@@ -77,20 +77,20 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/name" />
+                    app:layout_constraintTop_toBottomOf="@+id/pname" />
 
                 <EditText
-                    android:id="@+id/place"
+                    android:id="@+id/pplace"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:ems="10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/storename"
+                    app:layout_constraintTop_toBottomOf="@+id/pstorename"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:hint="PLACE"
+                    android:hint="Place"
                     android:textColorHint="@color/white"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/transparent"
@@ -100,41 +100,43 @@
                 <LinearLayout
                     android:id="@+id/layout"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/place"
+                    app:layout_constraintTop_toBottomOf="@+id/pplace"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
                     app:layout_constraintHeight_percent="0.11">
                     <EditText
-                        android:id="@+id/dist"
+                        android:id="@+id/pdist"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="DIST"
+                        android:hint="District"
                         android:textColorHint="@color/white"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/transparent"
                         android:layout_weight="4"
                         android:layout_marginEnd="2dp"/>
                     <EditText
-                        android:id="@+id/pin"
+                        android:id="@+id/ppin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:hint="PIN"
+                        android:hint="Pin"
+                        android:inputType="number"
                         android:textColorHint="@color/white"
                         android:textColor="@color/white"
                         android:backgroundTint="@color/transparent"
                         android:layout_weight="7"
                         android:layout_marginStart="2dp"/>
                 </LinearLayout>
-                <EditText
-                    android:id="@+id/licence"
+                <LinearLayout
+                    android:id="@+id/plicencecondiner"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:ems="10"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/layout"
@@ -145,43 +147,70 @@
                     android:textColorHint="@color/white"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/transparent"
-                    app:layout_constraintHeight_percent="0.11"
-                    />
+                    app:layout_constraintHeight_percent="0.11">
+                    <TextView
+                        android:id="@+id/plicence"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/white"
+                        android:text="Licence no"
+                        android:textSize="18dp"
+                        android:gravity="left|center"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="0.2"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/transparent"/>
+                </LinearLayout>
                 <EditText
-                    android:id="@+id/phone"
+                    android:id="@+id/pphoneno1"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:ems="10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/licence"
+                    app:layout_constraintTop_toBottomOf="@+id/plicencecondiner"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:hint="PHONE"
+                    android:hint="Phone no"
+                    android:inputType="number"
                     android:textColorHint="@color/white"
                     android:textColor="@color/white"
                     android:backgroundTint="@color/transparent"
                     app:layout_constraintHeight_percent="0.11"
                     />
-                <EditText
-                    android:id="@+id/email"
+                <LinearLayout
+                    android:id="@+id/plocationcondainer"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_height="48dp"
                     android:ems="10"
-                    android:visibility="gone"
+                    android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/phone"
+                    app:layout_constraintTop_toBottomOf="@+id/pphoneno1"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginEnd="10dp"
-                    android:hint="E-MAIL"
-                    android:textColorHint="@color/white"
-                    android:textColor="@color/white"
-                    android:backgroundTint="@color/transparent"
                     app:layout_constraintHeight_percent="0.11"
-                    />
+                    >
+                    <TextView
+                        android:id="@+id/plocationtxtv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textColor="@color/white"
+                        android:text="Location"
+                        android:textSize="18dp"
+                        android:gravity="left|center"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="0.2"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/transparent"/>
+
+                </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
             <TextView
                 android:layout_width="wrap_content"
@@ -193,6 +222,21 @@
                 android:textSize="25dp"/>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/serviceedit"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Brands"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:textSize="25dp"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/brandrecyclerprofile"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_gravity="center"
@@ -212,6 +256,11 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginRight="5dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
 
         </LinearLayout>
 

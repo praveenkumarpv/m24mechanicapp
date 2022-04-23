@@ -7,7 +7,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,8 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -26,25 +25,24 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 
-import Adapters.serviceadapter;
-import Helperclass.Newworkadpter;
+import Helperclass.Newworkupdater;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class homeFragment extends Fragment {
-    ImageView proimage,noteicon,histicon;
+    ImageView noteicon,histicon;
     RecyclerView adview,work;
-    String Uid;
+    String Uid,profilepic;
     private FirebaseFirestore db ;
     FirestoreRecyclerAdapter workadapter;
-
+    CircleImageView  proimage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         db = FirebaseFirestore.getInstance();
-        SharedPreferences systemfile = getContext().getSharedPreferences("systemfile", Context.MODE_PRIVATE);
-        Uid = systemfile.getString("uid","");
+        SharedPreferences systemfile = getContext().getSharedPreferences("preference", Context.MODE_PRIVATE);
+        Uid = systemfile.getString("licenceno","");
         proimage =v.findViewById(R.id.profileimage);
         noteicon = v.findViewById(R.id.notification);
         histicon = v.findViewById(R.id.history);
@@ -71,16 +69,25 @@ public class homeFragment extends Fragment {
         db.collection("MechanicData").document(Uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Glide.with(getActivity()).load(documentSnapshot.get("profileimage")).into(proimage);
+                profilepic = String.valueOf(documentSnapshot.get("propic"));
+               // Toast.makeText(getContext(), profilepic, Toast.LENGTH_SHORT).show();
+                if (profilepic.equals("no")){
+
+                }
+                else{
+                    Glide.with(getActivity()).load(profilepic).into(proimage);
+                   // Toast.makeText(getContext(), "hi", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
         //workrecycler///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         Query query = db.collection("MechanicData").document(Uid)
                 .collection("works");
-         FirestoreRecyclerOptions<Newworkadpter> options = new FirestoreRecyclerOptions.Builder<Newworkadpter>()
-                        .setQuery(query, Newworkadpter.class)
+         FirestoreRecyclerOptions<Newworkupdater> options = new FirestoreRecyclerOptions.Builder<Newworkupdater>()
+                        .setQuery(query, Newworkupdater.class)
                         .build();
-        workadapter = new FirestoreRecyclerAdapter<Newworkadpter,workholder>(options){
+        workadapter = new FirestoreRecyclerAdapter<Newworkupdater,workholder>(options){
 
             @NonNull
             @Override
@@ -90,8 +97,8 @@ public class homeFragment extends Fragment {
             }
 
             @Override
-            protected void onBindViewHolder(@NonNull workholder holder, int position, @NonNull Newworkadpter model) {
-             Glide.with(getContext()).load(model.getProfilephoto()).into(holder.proimage);
+            protected void onBindViewHolder(@NonNull workholder holder, int position, @NonNull Newworkupdater model) {
+             //Glide.with(getContext()).load(model.getProfilephoto()).into(holder.proimage);
              holder.name.setText(model.getName());
             }
         };
@@ -108,7 +115,7 @@ public class homeFragment extends Fragment {
         TextView name;
         public workholder(@NonNull View itemView) {
             super(itemView);
-            proimage = itemView.findViewById(R.id.prophoto);
+           // proimage = itemView.findViewById(R.id.customerprofilephoto);
             name = itemView.findViewById(R.id.name);
         }
     }

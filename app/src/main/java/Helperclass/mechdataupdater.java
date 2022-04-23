@@ -1,23 +1,37 @@
 package Helperclass;
 
+import java.util.Date;
 import java.util.List;
 
 public class mechdataupdater {
-    String name,storename,place,dist,pin,licno,phone,email;
+    String name,storename,place,dist,pin,licno,phone1,password,geohashcode,propic,status,date;
+    double latitude, longitude;
     List<String> service;
-    public mechdataupdater(String name, String storename, String place, String dist, String pin, String licno, String phone, String email, List<String> service) {
+    List<String> selectedbrand;
+
+
+
+    public mechdataupdater() {
+    }
+
+    public mechdataupdater(String name, String storename, String place, String dist, String pin, String licno, String phone1, String password, String geohashcode, String propic, String status,
+                           String date, double latitude, double longitude, List<String> service, List<String> selectedbrand) {
         this.name = name;
         this.storename = storename;
         this.place = place;
         this.dist = dist;
         this.pin = pin;
         this.licno = licno;
-        this.phone = phone;
-        this.email = email;
+        this.phone1 = phone1;
+        this.password = password;
+        this.geohashcode = geohashcode;
+        this.propic = propic;
+        this.status = status;
+        this.date = date;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.service = service;
-    }
-
-    public mechdataupdater() {
+        this.selectedbrand = selectedbrand;
     }
 
     public String getName() {
@@ -68,20 +82,20 @@ public class mechdataupdater {
         this.licno = licno;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhone1() {
+        return phone1;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhone1(String phone1) {
+        this.phone1 = phone1;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPassword() {
+        return password;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public List<String> getService() {
@@ -90,5 +104,61 @@ public class mechdataupdater {
 
     public void setService(List<String> service) {
         this.service = service;
+    }
+
+    public List<String> getSelectedbrand() {
+        return selectedbrand;
+    }
+
+    public void setSelectedbrand(List<String> selectedbrand) {
+        this.selectedbrand = selectedbrand;
+    }
+
+    public String getGeohashcode() {
+        return geohashcode;
+    }
+
+    public void setGeohashcode(String geohashcode) {
+        this.geohashcode = geohashcode;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getPropic() {
+        return propic;
+    }
+
+    public void setPropic(String propic) {
+        this.propic = propic;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

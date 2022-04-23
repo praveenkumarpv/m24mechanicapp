@@ -22,7 +22,7 @@ import java.util.List;
 public class serviceadapter extends RecyclerView.Adapter<serviceadapter.viewholder> {
     List<String> service;
     static List<String> selectedservices = new ArrayList<>();
-    List<String> select;
+    List<String> select = new ArrayList<>();
     List<String> serviceicon;
     Context context;
 
@@ -53,10 +53,14 @@ public class serviceadapter extends RecyclerView.Adapter<serviceadapter.viewhold
     @Override
     public void onBindViewHolder(@NonNull viewholder holder, int position) {
         int pos = position;
-       // Glide.with(context).load(.iconsurl).into(holder.icon);
+       Glide.with(context).load(serviceicon.get(pos)).into(holder.icon);
         holder.serviceid.setText(service.get(pos));
-        if (select.contains(service.get(pos))){ ////code for if select array is empty
+        if (select.isEmpty()){
+
+        }
+        else if (select.contains(service.get(pos))){ ////code for if select array is empty
             selectedservices.add(service.get(pos));
+            select.remove(select.indexOf(service.get(pos)));
             holder.cover.setBackgroundColor(Color.parseColor("#707070"));
         }
         holder.servicelayout.setOnClickListener(new View.OnClickListener() {

@@ -72,6 +72,70 @@
 
 
     </LinearLayout>
+    <LinearLayout
+        android:id="@+id/brandlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Brands"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="9">
+
+            <ImageButton
+                android:id="@+id/backfrombrand"
+                android:layout_width="42dp"
+                android:layout_height="33dp"
+                android:backgroundTint="#00FFFFFF"
+                android:src="@drawable/previous"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.068"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.428" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/doneinbrand"
+                android:layout_width="128dp"
+                android:layout_height="41dp"
+                android:background="@drawable/butttonback"
+                android:text="Register"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/form"
@@ -81,167 +145,225 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toTopOf="parent">
 
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginEnd="10dp"
-            android:hint="NAME"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/transparent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.07"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.084" />
-
-        <EditText
-            android:id="@+id/storename"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:layout_marginEnd="10dp"
-            android:hint="STORE NAME"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/transparent"
-            app:layout_constraintHeight_percent="0.07"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
-
-        <EditText
-            android:id="@+id/place"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/storename"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:hint="PLACE"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/transparent"
-            app:layout_constraintHeight_percent="0.07"
-            />
-
-        <LinearLayout
-            android:id="@+id/layout"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/place"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            app:layout_constraintHeight_percent="0.07">
-            <EditText
-                android:id="@+id/dist"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="DIST"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/transparent"
-                android:layout_weight="4"
-                android:layout_marginEnd="2dp"/>
-            <EditText
-                android:id="@+id/pin"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="PIN"
-                android:inputType="number"
-                android:textColorHint="@color/white"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/transparent"
-                android:layout_weight="7"
-                android:layout_marginStart="2dp"/>
-        </LinearLayout>
-        <EditText
-            android:id="@+id/licence"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:hint="Lic.NO"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/transparent"
-            app:layout_constraintHeight_percent="0.07"
-            />
-        <EditText
-            android:id="@+id/phone"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/licence"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:hint="PHONE"
-            android:inputType="number"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/transparent"
-            app:layout_constraintHeight_percent="0.07"
-            />
-        <EditText
-            android:id="@+id/email"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:ems="10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/phone"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="10dp"
-            android:hint="E-MAIL"
-            android:textColorHint="@color/white"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/transparent"
-            app:layout_constraintHeight_percent="0.07"
-            />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SUBMIT"
-            android:textColor="@color/white"
-            android:paddingEnd="10dp"
-            android:paddingStart="10dp"
-            android:background="@drawable/butttonback"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            app:layout_constraintVertical_bias="0.351" />
+            app:layout_constraintTop_toTopOf="parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:ems="10"
+                    android:hint="Name"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.023" />
+
+                <EditText
+                    android:id="@+id/storename"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:ems="10"
+                    android:hint="Store name"
+                    android:inputType="textPersonName"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/name" />
+
+                <EditText
+                    android:id="@+id/place"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:ems="10"
+                    android:hint="Place"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/storename" />
+
+                <LinearLayout
+                    android:id="@+id/layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/place">
+
+                    <EditText
+                        android:id="@+id/dist"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="2dp"
+                        android:layout_weight="4"
+                        android:backgroundTint="@color/transparent"
+                        android:hint="District"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        />
+
+                    <EditText
+                        android:id="@+id/pin"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="2dp"
+                        android:layout_weight="7"
+                        android:backgroundTint="@color/transparent"
+                        android:hint="Pin"
+                        android:inputType="number"
+                        android:textColor="@color/white"
+                        android:textColorHint="@color/white"
+                        />
+
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/licence"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:ems="10"
+                    android:hint="Lic.no"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layout" />
+
+                <EditText
+                    android:id="@+id/phoneno1"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:ems="10"
+                    android:hint="Phone no1"
+                    android:inputType="number"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/licence"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <LinearLayout
+                    android:id="@+id/locationcondainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="10dp"
+                    android:backgroundTint="@color/transparent"
+                    android:ems="10"
+                    android:hint="Phone no2"
+                    android:orientation="vertical"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.07"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneno1"
+                    app:layout_constraintVertical_bias="0.08">
+
+
+
+
+                    <TextView
+                        android:id="@+id/locationtxtv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="0.2"
+                        android:gravity="left|center"
+                        android:text="Location"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/transparent"
+                        />
+
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/butttonback"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="SUBMIT"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/locationcondainer"
+                    app:layout_constraintVertical_bias="0.176" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -271,39 +393,34 @@
             app:layout_constraintVertical_bias="0.292"
             tools:fontFamily="sans-serif-smallcaps" />
 
-        <LinearLayout
-            android:layout_width="322dp"
-            android:layout_height="41dp"
-            android:orientation="horizontal"
-            android:gravity="center"
+        <EditText
+            android:id="@+id/registerotp"
+            android:layout_width="304dp"
+            android:layout_height="62dp"
+            android:backgroundTint="@color/white"
+            android:textAlignment="center"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.46"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2"
-            app:layout_constraintVertical_bias="0.133">
-            <EditText
-                android:id="@+id/otp1"
-                android:layout_width="20dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/white"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"/>
-            <EditText
-                android:id="@+id/otp2"
-                android:layout_width="20dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/white"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"/>
-            <EditText
-                android:id="@+id/otp3"
-                android:layout_width="20dp"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/white"
-                android:layout_height="match_parent"
-                android:textColor="@color/white"/>
-        </LinearLayout>
+            app:layout_constraintVertical_bias="0.055" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/verifyotp"
+            android:layout_width="194dp"
+            android:layout_height="65dp"
+            android:text="verify otp"
+            android:textColor="@color/white"
+            android:background="@drawable/butttonback"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerotp"
+            app:layout_constraintVertical_bias="0.282" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -366,6 +483,7 @@
             android:textColor="@color/white"
             android:textAlignment="center"
             android:background="@drawable/sliderborder"
+            android:inputType="textPassword"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.44"

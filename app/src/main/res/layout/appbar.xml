@@ -11,14 +11,29 @@
        android:layout_width="match_parent"
        android:layout_height="match_parent">
 
-       <ImageView
+       <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:src="@drawable/m24logo"
+           android:fontFamily="@font/cantata_one"
+           android:letterSpacing="0.02"
+           android:text="M24"
+           android:textColor="@color/white"
+           android:textSize="25dp"
            app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.498"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent" />
+
+       <!--       <ImageView-->
+<!--           android:id="@+id/appbaricon"-->
+<!--           android:layout_width="wrap_content"-->
+<!--           android:layout_height="wrap_content"-->
+
+<!--           app:layout_constraintBottom_toBottomOf="parent"-->
+<!--           app:layout_constraintEnd_toEndOf="parent"-->
+<!--           app:layout_constraintStart_toStartOf="parent"-->
+<!--           app:layout_constraintTop_toTopOf="parent" />-->
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.appcompat.widget.Toolbar>
